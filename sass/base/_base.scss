@@ -1,0 +1,25 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    /* Common technique to make converting to rem easy */
+    /* We want 10px --> 10 / 16 --> 62.5%*/
+    font-size: 62.5%;
+}
+
+/* Font Properties */
+body {
+    font-family: "Lato";
+    font-weight: 400;
+    /* font-size: 16px; */
+    line-height: 1.7;
+    color: $color-gray-dark;
+    padding: 3rem;
+
+    box-sizing: border-box;
+}
