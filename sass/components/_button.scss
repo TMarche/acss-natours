@@ -1,0 +1,64 @@
+.btn {
+    /* Use link pseudoclass */
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        transition: all .2s;
+        position: relative;
+        font-size: 1.6rem;
+    }
+    
+    &:hover {
+        transform: translateY(-.3rem);
+        /*x-direction, y-direction blur*/
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+        
+        /* After pseudo-element only when we have hover state */
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+
+    }
+    
+    &:active {
+        /* This is related to the ORIGINAL state */
+        transform: translateY(-.1rem);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+    }
+    
+    &--white {
+        background-color: white;
+        color: $color-gray-dark;
+        border-radius:  10rem;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+    
+    /* Essentially treated like a child of the parent element */
+    &::after {
+        /* Required for it to appear */
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        /* Needs to have a reference -- first element with pos relative that it can find */
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+
+    &--animated {
+        animation: moveInBottom .5s ease-out .75s;
+        /* Initial animation styles will be applied before the animation starts*/
+        animation-fill-mode: backwards;
+    }
+}
